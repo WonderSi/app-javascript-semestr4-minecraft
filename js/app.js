@@ -10,5 +10,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const appController = new AppController (welcomeView, userModel, mainView);
 
-    appController.init();   
+    appController.init();
 })

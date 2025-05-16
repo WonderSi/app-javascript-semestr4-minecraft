@@ -17,12 +17,18 @@ class AppController {
   async showMainView() {
     const username = this.userModel.getUsername();
     this.mainView.render(username);
+    this.mainView.bindLogout(this.handleLogout.bind(this))
   }
 
   handleLogin(username) {
     this.userModel.setUsername(username);
     this.showMainView();
     console.log("handleLogin");
+  }
+
+  handleLogout() {
+    this.userModel.logout();
+    this.showWelcomeView();
   }
 }
 
