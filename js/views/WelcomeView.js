@@ -15,13 +15,13 @@ class WelcomeView {
     console.log('render')
   }
 
-  bindContinueBtn() {
+  bindContinueBtn(handler) {
     document.getElementById('welcome-continue-btn').addEventListener('click', () => {
       const usernameInput = document.getElementById('welcome-username-input');
-      const username = usernameInput.ariaValueMax.trim();
+      const username = usernameInput.value.trim();
 
       if (username) {
-        
+        handler(username)
       } else {
         alert("Введите ваше имя");
       }
