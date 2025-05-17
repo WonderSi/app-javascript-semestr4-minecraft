@@ -1,9 +1,15 @@
+import Logger from "../utils/Logger.js";
+
 class WelcomeView {
   constructor() {
     this.app = document.getElementById("app");
+
+    this.logger = new Logger("WelcomeView");
+    this.logger.log("WelcomeView инициализированный");
   }
 
   render() {
+    this.logger.log("render");
     this.app.innerHTML = `
     <div class="welcome-container">
       <h1>Добро пожаловать!</h1>
@@ -13,20 +19,24 @@ class WelcomeView {
         <button id="welcome-continue-btn">ДАЛЕЕ</button>
       </div>
     </div>`;
-    console.log('render')
   }
 
   bindContinueBtn(handler) {
-    document.getElementById('welcome-continue-btn').addEventListener('click', () => {
-      const usernameInput = document.getElementById('welcome-username-input');
-      const username = usernameInput.value.trim();
+    this.logger.log("bindContinueBtn");
+    document
+      .getElementById("welcome-continue-btn")
+      .addEventListener("click", () => {
+        const usernameInput = document.getElementById("welcome-username-input");
+        const username = usernameInput.value.trim();
 
-      if (username) {
-        handler(username)
-      } else {
-        alert("Введите ваше имя");
-      }
-    })
+        if (username) {
+          this.logger.log('Успешная проверка')
+          handler(username);
+        } else {
+          this.logger.warn('Пустое имя')
+          alert("Введите ваше имя");
+        }
+      });
   }
 }
 
