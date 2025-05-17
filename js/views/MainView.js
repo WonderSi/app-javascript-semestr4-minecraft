@@ -14,11 +14,11 @@ class MainView {
     <div id="main-container">
         <header id="main-header">
             <div id="main-header-content">
-                <h1>Minecraft | ItemVault</h1>
+                <h1>Minecraft - ItemVault</h1>
                 <p id="main-user-greeting">Привет, ${username}</p>
             </div>
             <dev id="main-header-controls">
-                <button id="main-logout-btn">Выйти</button>
+                <button id="main-logout-btn">ВЫЙТИ</button>
             </dev>
         </header>
     </div>

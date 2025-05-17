@@ -11,12 +11,14 @@ class WelcomeView {
   render() {
     this.logger.log("render");
     this.app.innerHTML = `
-    <div class="welcome-container">
-      <h1>Добро пожаловать!</h1>
-      <hr/>
-      <div id="welcome-form">
-        <input type="text" id="welcome-username-input" placeholder="Введите ваше имя">
-        <button id="welcome-continue-btn">ДАЛЕЕ</button>
+    <div id="welcome">
+      <div class="welcome-container">
+        <h1>Добро пожаловать!</h1>
+        <hr/>
+        <div id="welcome-form">
+          <input type="text" id="welcome-username-input" placeholder="Введите ваше имя">
+          <button id="welcome-continue-btn">ДАЛЕЕ</button>
+        </div>
       </div>
     </div>`;
   }
