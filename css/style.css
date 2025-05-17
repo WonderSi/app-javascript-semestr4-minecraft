@@ -19,7 +19,20 @@ input {
   padding: 8px 12px;
   background: var(--minecraft-gray2);
   box-shadow: 0 6px 0 0 rgba(0, 0, 0, 0.5) inset;
-  color: var(--minecraft-gray1);
+  color: var(--minecraft-white);
+  border: 2px solid #898481;
+}
+
+input[type="checkbox"] {
+  box-shadow: none;
+}
+
+select {
+  height: 48px;
+  padding: 8px 12px;
+  background: var(--minecraft-gray2);
+  box-shadow: 0 6px 0 0 rgba(0, 0, 0, 0.5) inset;
+  color: var(--minecraft-white);
   border: 2px solid #898481;
 }
 

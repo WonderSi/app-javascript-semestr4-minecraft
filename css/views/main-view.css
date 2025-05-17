@@ -15,3 +15,12 @@
 #main-header-content h1 {
   margin-right: 25px;
 }
+
+#main-sidebar {
+    background: var(--minecraft-green-6);
+}
+
+
+#main-filter-section div {
+display: flex;
+}
