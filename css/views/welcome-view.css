@@ -1,0 +1,31 @@
+.welcome-container {
+  background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.04) 0,
+      rgba(255, 255, 255, 0.04) 100%
+    ),
+    var(--minecraft-gray2, #262423);
+  box-shadow: 0 -4px 0 0 #000 inset, -4px 0 0 0 #3d3938 inset,
+    4px 0 0 0 #000 inset, 0 4px 0 0 #3d3938 inset;
+  padding: 30px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.welcome-container h1 {
+  text-align: center;
+}
+
+#welcome-form {
+  display: flex;
+  justify-content: center;
+}
+
+#welcome-username-input {
+  flex: 2;
+  margin-right: 10px;
+}
+
+#welcome-continue-btn {
+  flex: 1;
+}
