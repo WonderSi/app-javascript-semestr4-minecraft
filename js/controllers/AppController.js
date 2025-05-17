@@ -11,33 +11,33 @@ class AppController {
   }
 
   init() {
-    this.showWelcomeView();
     this.logger.log("Инициализация приложения");
+    this.showWelcomeView();
   }
 
   showWelcomeView() {
+    this.logger.log("showWelcomeView");
     this.welcomeView.render();
     this.welcomeView.bindContinueBtn(this.handleLogin.bind(this));
-    this.logger.log("showWelcomeView");
   }
 
   async showMainView() {
+    this.logger.log("showMainView");
     const username = this.userModel.getUsername();
     this.mainView.render(username);
     this.mainView.bindLogout(this.handleLogout.bind(this));
-    this.logger.log("showMainView");
   }
 
   handleLogin(username) {
+    this.logger.log("handleLogin");
     this.userModel.setUsername(username);
     this.showMainView();
-    this.logger.log("handleLogin");
   }
 
   handleLogout() {
+    this.logger.log("handleLogout");
     this.userModel.logout();
     this.showWelcomeView();
-    this.logger.log("handleLogout");
   }
 }
 
