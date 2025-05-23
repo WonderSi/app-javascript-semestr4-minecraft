@@ -77,6 +77,12 @@ class MainView {
       .getElementById("main-logout-btn")
       .addEventListener("click", handler);
   }
+
+  bindSearch(handler) {
+    this.logger.log("bindSearch");
+    const searchInput = document.getElementById("main-search-input");
+    searchInput.addEventListener("input", () => handler(searchInput.value));
+  }
 }
 
 export default MainView;

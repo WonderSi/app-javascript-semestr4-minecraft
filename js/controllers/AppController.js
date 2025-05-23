@@ -7,6 +7,9 @@ class AppController {
     this.mainView = mainView;
     this.itemModel = itemModel;
     this.itemListView = itemListView;
+    this.filterOptions = {
+      search: ''
+    }
 
     this.logger = new Logger("AppController");
     this.logger.log("AppController инициализированный");
@@ -27,7 +30,10 @@ class AppController {
     this.logger.log("showMainView");
     const username = this.userModel.getUsername();
     this.mainView.render(username);
+
     this.mainView.bindLogout(this.handleLogout.bind(this));
+    this.mainView.bindSearch(this.handleSearch.bind(this));
+
     this.mainView.showLoading();
     try {
       await this.itemModel.fetchAllItems();
@@ -51,9 +57,14 @@ class AppController {
     this.showWelcomeView();
   }
 
+  handleSearch(query) {
+    this.filterOptions.search = query;
+    this.applyFilters();
+  }
+
   applyFilters() {
     this.logger.log("applyFilters");
-    let filteredItems = this.itemModel.filteredItems();
+    let filteredItems = this.itemModel.filterItems(this.filterOptions.search);
     this.itemListView.render(filteredItems);
   }
 }

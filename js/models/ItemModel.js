@@ -16,9 +16,14 @@ class ItemModel {
     return this.items;
   }
 
-  filteredItems() {
+  filterItems(query) {
     this.logger.log("filteredItems");
-    return this.items;
+    if (!query) return this.items;
+    query = query.toLowerCase();
+    return this.items.filter(
+      (item) =>
+        item.name.toLowerCase().includes(query)
+    );
   }
 }
 
