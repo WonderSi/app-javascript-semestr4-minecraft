@@ -86,9 +86,20 @@ class MainView {
 
   bindSort(handler) {
     this.logger.log("bindSort");
-    document.getElementById("sort-select").addEventListener("change", (e) => {
-        handler(e.target.value);
-    });
+    document
+      .getElementById("sort-select")
+      .addEventListener("change", (event) => {
+        handler(event.target.value);
+      });
+  }
+
+  bindRenewableFilter(handler) {
+    this.logger.log("bindRenewableFilter");
+    document
+      .getElementById("main-renewable-filter-input")
+      .addEventListener("change", (event) => {
+        handler(event.target.checked);
+      });
   }
 }
 

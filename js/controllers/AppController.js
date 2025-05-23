@@ -9,7 +9,9 @@ class AppController {
     this.itemListView = itemListView;
     this.filterOptions = {
       search: "",
-      sortBy: 'name-asc'
+      sortBy: "name-asc",
+      onlyRenewable: false,
+      onlyFavorites: false,
     };
 
     this.logger = new Logger("AppController");
@@ -35,6 +37,7 @@ class AppController {
     this.mainView.bindLogout(this.handleLogout.bind(this));
     this.mainView.bindSearch(this.handleSearch.bind(this));
     this.mainView.bindSort(this.handleSort.bind(this));
+    this.mainView.bindRenewableFilter(this.handleRenewableFilter.bind(this));
 
     this.mainView.showLoading();
     try {
@@ -66,8 +69,20 @@ class AppController {
   }
 
   handleSort(sortBy) {
-    this.logger.log('handleSort');
+    this.logger.log("handleSort");
     this.filterOptions.sortBy = sortBy;
+    this.applyFilters();
+  }
+
+  handleRenewableFilter(checked) {
+    this.logger.log("handleRenewableFilter");
+    this.filterOptions.onlyRenewable = checked;
+    this.applyFilters();
+  }
+
+  handleFavoritesFilter(checked) {
+    this.logger.log("handleFavoritesFilter");
+    this.filterOptions.onlyFavorites = checked;
     this.applyFilters();
   }
 

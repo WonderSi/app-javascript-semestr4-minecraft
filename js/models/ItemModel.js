@@ -50,6 +50,14 @@ class ItemModel {
       );
     }
 
+    if (filterOptions.onlyRenewable) {
+      filteredItems = filteredItems.filter((item) => item.renewable);
+    }
+
+    if (filterOptions.onlyFavorites) {
+      filteredItems = filteredItems.filter((item) => {});
+    }
+
     if (filterOptions.sortBy) {
       filteredItems = this.sortItems(filteredItems, filterOptions.sortBy);
     }
