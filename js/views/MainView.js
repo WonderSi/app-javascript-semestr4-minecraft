@@ -30,8 +30,8 @@ class MainView {
                 </div>
                 <div id="main-filter-sort">
                   <select id="sort-select">
-                    <option value="name-asc">По имени (А-Я)</option>
-                    <option value="name-desc">По имени (Я-А)</option>
+                    <option value="name-asc">По названию (А-Я)</option>
+                    <option value="name-desc">По названию (Я-А)</option>
                     <option value="stackSize-asc">По размеру стака (возр.)</option>
                     <option value="stackSize-desc">По размеру стака (убыв.)</option>
                   </select>
