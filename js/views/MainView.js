@@ -51,6 +51,7 @@ class MainView {
 
           <div id="main-content-area">
             <div id="main-loading-indicator">
+
               <p>Загрузка данных...</p>
             </div>
             <div id="main-items-container"></div>

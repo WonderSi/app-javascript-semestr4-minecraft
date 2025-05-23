@@ -31,3 +31,11 @@ display: flex;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
 }
+
+#main-loading-indicator p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    font-size: 40px;
+}
