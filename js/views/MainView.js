@@ -83,6 +83,13 @@ class MainView {
     const searchInput = document.getElementById("main-search-input");
     searchInput.addEventListener("input", () => handler(searchInput.value));
   }
+
+  bindSort(handler) {
+    this.logger.log("bindSort");
+    document.getElementById("sort-select").addEventListener("change", (e) => {
+        handler(e.target.value);
+    });
+  }
 }
 
 export default MainView;

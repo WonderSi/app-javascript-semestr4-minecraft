@@ -9,6 +9,7 @@ class AppController {
     this.itemListView = itemListView;
     this.filterOptions = {
       search: "",
+      sortBy: 'name-asc'
     };
 
     this.logger = new Logger("AppController");
@@ -33,6 +34,7 @@ class AppController {
 
     this.mainView.bindLogout(this.handleLogout.bind(this));
     this.mainView.bindSearch(this.handleSearch.bind(this));
+    this.mainView.bindSort(this.handleSort.bind(this));
 
     this.mainView.showLoading();
     try {
@@ -63,10 +65,18 @@ class AppController {
     this.applyFilters();
   }
 
+  handleSort(sortBy) {
+    this.logger.log('handleSort');
+    this.filterOptions.sortBy = sortBy;
+    this.applyFilters();
+  }
+
   applyFilters() {
     this.logger.log("applyFilters");
-    let filteredItems = this.itemModel.filterItems(this.filterOptions.search);
+    const filteredItems = this.itemModel.applyAllFilters(this.filterOptions);
     this.itemListView.render(filteredItems);
+    // button click
+    // button favorite
   }
 }
 
