@@ -25,8 +25,7 @@ class MainView {
         <main id="main-content">
           <div id="main-sidebar">
             <div id="main-filter-section">
-              <div>
-                <div id="-main-filter-search">
+                <div id="main-filter-search">
                   <input type="text" id="main-search-input" placeholder="Введите название предмета">
                 </div>
                 <div id="main-filter-sort">
@@ -39,13 +38,12 @@ class MainView {
                 </div>
                 <div id="main-filter-group">
                   <label>
-                    <input type="checkbox" id="main-renewable-filter-input"> Возобновляемые
+                    <input type="checkbox" id="main-renewable-filter-input"> <span>Возобновляемые</span>
                   </label>
                   <label>
-                    <input type="checkbox" id="main-favorites-filter-input"> Избранное
+                    <input type="checkbox" id="main-favorites-filter-input"> <span>Избранное</span>
                   </label>
                 </div>
-              </div>
             </div>
           </div>
 

@@ -65,7 +65,7 @@
 
 #item-actions #item-detail-btn {
   flex: 2;
-    overflow: hidden;
+  overflow: hidden;
   box-sizing: border-box;
   min-width: 0;
 }
@@ -77,16 +77,3 @@
   align-items: center;
   justify-content: center;
 }
-
-#icon {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  background: var(--minecraft-star_full_icon_svg-22x24) no-repeat center;
-  background-size: contain;
-}
-
-#item-favorite-btn.active #icon {
-  background-image: url('close-icon.png');
-}
-
