@@ -89,9 +89,22 @@ class AppController {
   applyFilters() {
     this.logger.log("applyFilters");
     const filteredItems = this.itemModel.applyAllFilters(this.filterOptions);
-    this.itemListView.render(filteredItems);
+    this.itemListView.render(filteredItems, this.itemModel.favorites);
     // button click
-    // button favorite
+    this.itemListView.bindFavoriteToggle(this.handleFavoriteToggle.bind(this));
+  }
+
+  handleFavoriteToggle(itemID, shouldAdd) {
+    this.logger.log("handleFavoriteToggle");
+    if (shouldAdd) {
+      this.itemModel.addToFavorites(itemID);
+    } else {
+      this.itemModel.removeFromFavorites(itemID);
+    }
+
+    if (this.filterOptions.onlyFavorites) {
+      this.applyFilters();
+    }
   }
 }
 

@@ -4,6 +4,7 @@ class ItemModel {
   constructor() {
     this.apiURL = "https://minecraft-api.vercel.app/api";
     this.items = [];
+    this.favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
     this.logger = new Logger("ItemModel");
     this.logger.log("ItemModel инициализированный");
@@ -14,6 +15,28 @@ class ItemModel {
     const response = await fetch(`${this.apiURL}/items`);
     this.items = await response.json();
     return this.items;
+  }
+
+  addToFavorites(itemID) {
+    if (!this.favorites.includes(itemID)) {
+      this.logger.log("addToFavorites");
+      this.favorites.push(itemID);
+      this.saveFavorites();
+    }
+  }
+
+  removeFromFavorites(itemID) {
+    if (this.favorites.includes(itemID)) {
+      this.logger.log("removeFromFavorites");
+      this.favorites = this.favorites.filter((id) => id !== itemID);
+      this.saveFavorites();
+    }
+  }
+
+  saveFavorites() {
+    this.logger.log("saveFavorites");
+    localStorage.setItem("favorites", JSON.stringify(this.favorites));
+    console.log(localStorage);
   }
 
   sortItems(items, criteria) {

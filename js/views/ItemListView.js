@@ -6,7 +6,7 @@ class ItemListView {
     this.logger.log("ItemListView инициализированный");
   }
 
-  render(items) {
+  render(items, favorites) {
     this.container = document.getElementById("main-items-container");
     this.logger.log("render");
     this.container.innerHTML = "";
@@ -16,12 +16,16 @@ class ItemListView {
             <p>Предметы не найдены</p>
         </div>
         `;
+      return;
     }
 
     items.forEach((item) => {
       const itemCard = document.createElement("div");
       itemCard.className = "item-card";
       itemCard.dataset.id = item.namespacedId;
+
+      const isFavorite = favorites.includes(item.namespacedId);
+
       itemCard.innerHTML = `
 
             <div id="item-image">
@@ -36,12 +40,45 @@ class ItemListView {
             </div>
             <div id="item-actions">
                 <button id="item-detail-btn">Подробнее</button>
-                <button id="item-favorite-btn"><img src="../../assets/svg/star_empty (1).svg"></button>
+                <button id="item-favorite-btn" class="item-favorite-btn ${
+                  isFavorite ? "favorited" : ""
+                }" data-id="${item.namespacedId}"><img src="../../assets/svg/${
+        isFavorite ? "star_full" : "star_empty"
+      }.svg"></button>
             </div>
             
         `;
       this.container.appendChild(itemCard);
     });
+  }
+
+  bindFavoriteToggle(handler) {
+    this.logger.log("bindFavoriteToggle");
+    this.container.addEventListener("click", (event) => {
+      const favoriteBtn = event.target.closest('.item-favorite-btn');
+
+      if (favoriteBtn) {
+        const itemID = favoriteBtn.dataset.id;
+        const isFavorite = favoriteBtn.classList.contains("favorited");
+
+        this.updateFavoriteButton(favoriteBtn, !isFavorite);
+
+        handler(itemID, !isFavorite);
+      }
+    });
+  }
+
+  updateFavoriteButton(button, isFavorite) {
+    this.logger.log('updateFavoriteButton');
+    const img = button.querySelector("img");
+
+    if (isFavorite) {
+      button.classList.add("favorited");
+      img.src = "../../assets/svg/star_full.svg";
+    } else {
+      button.classList.remove("favorited");
+      img.src = "../../assets/svg/star_empty.svg";
+    }
   }
 }
 
