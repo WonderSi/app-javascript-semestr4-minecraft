@@ -24,3 +24,10 @@
 #main-filter-section div {
 display: flex;
 }
+
+#main-items-container {
+    padding: 20px;
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}

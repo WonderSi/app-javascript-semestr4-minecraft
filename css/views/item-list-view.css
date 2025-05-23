@@ -1,0 +1,92 @@
+.item-card {
+  background-color: #313131;
+  box-shadow: 0 -4px 0 0 var(--minecraft-black) inset,
+    -4px 0 0 0 var(--minecraft-grey-4) inset,
+    4px 0 0 0 var(--minecraft-black) inset,
+    0 4px 0 0 var(--minecraft-grey-4) inset;
+
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--minecraft-grey2);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.item-card:hover {
+  transform: translateY(-5px);
+  background-color: var(--minecraft-grey-4);
+  box-shadow: 0 -4px 0 0 var(--minecraft-grey-6) inset,
+    -4px 0 0 0 var(--minecraft-grey-3) inset,
+    4px 0 0 0 var(--minecraft-grey-6) inset,
+    0 4px 0 0 var(--minecraft-grey-3) inset;
+}
+
+#item-image {
+  text-align: center;
+  padding: 20px;
+}
+
+#item-image img {
+  width: 64px;
+  height: 64px;
+  image-rendering: pixelated;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+#item-info {
+  padding: 15px;
+  background: var(--minecraft-gray2);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+#item-stack-size {
+  color: var(--minecraft-green-4);
+  margin: 5px 0;
+  font-size: 0.9em;
+}
+
+#item-renewable {
+  font-size: 0.85em;
+  margin: 5px 0;
+}
+
+#item-actions {
+  padding: 12px;
+  background: #1a1a1a;
+  display: flex;
+  gap: 8px;
+  border-top: 1px solid #3a3a3a;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#item-actions #item-detail-btn {
+  flex: 2;
+    overflow: hidden;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+#item-actions #item-favorite-btn {
+  width: 52px;
+  padding: 8px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#icon {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background: var(--minecraft-star_full_icon_svg-22x24) no-repeat center;
+  background-size: contain;
+}
+
+#item-favorite-btn.active #icon {
+  background-image: url('close-icon.png');
+}
+

@@ -11,7 +11,7 @@
       rgba(255, 255, 255, 0.04) 0,
       rgba(255, 255, 255, 0.04) 100%
     ),
-    var(--minecraft-gray2, #262423);
+    var(--minecraft-grey-5, #262423);
   box-shadow: 0 -4px 0 0 #000 inset, -4px 0 0 0 #3d3938 inset,
     4px 0 0 0 #000 inset, 0 4px 0 0 #3d3938 inset;
   padding: 30px;
