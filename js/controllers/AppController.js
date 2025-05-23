@@ -1,10 +1,12 @@
 import Logger from "../utils/Logger.js";
 
 class AppController {
-  constructor(welcomeView, userModel, mainView) {
+  constructor(welcomeView, userModel, mainView, itemModel, itemListView) {
     this.welcomeView = welcomeView;
     this.userModel = userModel;
     this.mainView = mainView;
+    this.itemModel = itemModel;
+    this.itemListView = itemListView;
 
     this.logger = new Logger("AppController");
     this.logger.log("AppController инициализированный");
@@ -26,6 +28,15 @@ class AppController {
     const username = this.userModel.getUsername();
     this.mainView.render(username);
     this.mainView.bindLogout(this.handleLogout.bind(this));
+    this.mainView.showLoading();
+    try {
+      await this.itemModel.fetchAllItems();
+      this.applyFilters();
+      this.mainView.hideLoading();
+    } catch (error) {
+      this.logger.error("Failed to load items", error);
+      alert("Не удалось загрузить данные. Пожалуйста попробуйте позже");
+    }
   }
 
   handleLogin(username) {
@@ -38,6 +49,12 @@ class AppController {
     this.logger.log("handleLogout");
     this.userModel.logout();
     this.showWelcomeView();
+  }
+
+  applyFilters() {
+    this.logger.log("applyFilters");
+    let filteredItems = this.itemModel.filteredItems();
+    this.itemListView.render(filteredItems);
   }
 }
 

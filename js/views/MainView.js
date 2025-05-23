@@ -48,9 +48,28 @@ class MainView {
               </div>
             </div>
           </div>
+
+          <div id="main-content-area">
+            <div id="main-loading-indicator">
+              <p>Загрузка данных...</p>
+            </div>
+            <div id="main-items-container"></div>
+          </div>
         </main>
     </div>
     `;
+  }
+
+  showLoading() {
+    this.logger.log("showLoading");
+    document.getElementById("main-loading-indicator").style.display = "block";
+    document.getElementById("main-items-container").style.display = "none";
+  }
+
+  hideLoading() {
+    this.logger.log("hideLoading");
+    document.getElementById("main-loading-indicator").style.display = "none";
+    document.getElementById("main-items-container").style.display = "block";
   }
 
   bindLogout(handler) {
