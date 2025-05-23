@@ -36,7 +36,7 @@ class ItemListView {
             </div>
             <div id="item-actions">
                 <button id="item-detail-btn">Подробнее</button>
-                <button id="item-favorite-btn"><img src="../../assets/svg/star_full.svg"></button>
+                <button id="item-favorite-btn"><img src="../../assets/svg/star_empty (1).svg"></button>
             </div>
             
         `;

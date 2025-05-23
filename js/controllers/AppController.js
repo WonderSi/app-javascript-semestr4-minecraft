@@ -8,8 +8,8 @@ class AppController {
     this.itemModel = itemModel;
     this.itemListView = itemListView;
     this.filterOptions = {
-      search: ''
-    }
+      search: "",
+    };
 
     this.logger = new Logger("AppController");
     this.logger.log("AppController инициализированный");
@@ -58,6 +58,7 @@ class AppController {
   }
 
   handleSearch(query) {
+    this.logger.log("handleSearch");
     this.filterOptions.search = query;
     this.applyFilters();
   }
