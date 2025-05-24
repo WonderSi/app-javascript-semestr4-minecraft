@@ -14,8 +14,7 @@ class ItemListView {
     if (items.length === 0) {
       this.container.innerHTML = `
             <div id="no-items-message">
-                <p>Предметы не найдены</p>
-                <p>Попробуйте изменить фильтры или добавить предметы в избранное</p>
+                <p>Предметы не найдены. Попробуйте изменить фильтры</p>
             </div>
         `;
       return;
@@ -40,7 +39,9 @@ class ItemListView {
                 }</p>
             </div>
             <div id="item-actions">
-                <button id="item-detail-btn">Подробнее</button>
+                <button id="item-detail-btn" class="item-detail-btn" data-id="${
+                  item.namespacedId
+                }">Подробнее</button>
                 <button id="item-favorite-btn" class="item-favorite-btn ${
                   isFavorite ? "favorited" : ""
                 }" data-id="${item.namespacedId}"><img src="../../assets/svg/${
@@ -49,6 +50,19 @@ class ItemListView {
             </div>  
         `;
       this.container.appendChild(itemCard);
+    });
+  }
+
+  bindItemClick(handler) {
+    this.logger.log("bindItemClick");
+    this.container.addEventListener("click", (event) => {
+      const itemBtn = event.target.closest(".item-detail-btn");
+
+      if (itemBtn) {
+        const itemCard = itemBtn.closest(".item-card");
+        const itemID = itemCard.dataset.id;
+        handler(itemID);
+      }
     });
   }
 
@@ -73,11 +87,11 @@ class ItemListView {
     const img = button.querySelector("img");
 
     if (isFavorite) {
-      this.logger.log('StarFull')
+      this.logger.log("StarFull");
       button.classList.add("favorited");
       img.src = "../../assets/svg/star_full.svg";
     } else {
-      this.logger.log('StarEmpty')
+      this.logger.log("StarEmpty");
       button.classList.remove("favorited");
       img.src = "../../assets/svg/star_empty.svg";
     }

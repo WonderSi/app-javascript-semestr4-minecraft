@@ -17,6 +17,13 @@ class ItemModel {
     return this.items;
   }
 
+  getItemById(id) {
+    this.logger.log('getItemById');
+    const temp = this.items.find(item => item.namespacedId === id);
+    console.log(temp)
+    return temp;
+  }
+
   addToFavorites(itemID) {
     if (!this.favorites.includes(itemID)) {
       this.logger.log("addToFavorites");

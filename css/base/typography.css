@@ -51,6 +51,11 @@ p {
   font-weight: 600;
 }
 
+#item-description {
+  font-family: "NotoSans", monospace;
+  font-weight: 400;
+}
+
 input {
   font-family: "NotoSans", monospace;
   font-weight: 600;

@@ -55,6 +55,13 @@ class MainView {
             </div>
             <div id="main-items-container"></div>
           </div>
+
+          <div id="main-item-detail-modal">
+            <div id="main-modal-content">
+              <span id="main-close-modal"><img src="../../assets/svg/close.svg"></span>
+              <div id="main-item-detail-content"></div>
+            </div>
+          </div>
         </main>
     </div>
     `;

@@ -1,12 +1,20 @@
 import Logger from "../utils/Logger.js";
 
 class AppController {
-  constructor(welcomeView, userModel, mainView, itemModel, itemListView) {
+  constructor(
+    welcomeView,
+    userModel,
+    mainView,
+    itemModel,
+    itemListView,
+    itemDetailView
+  ) {
     this.welcomeView = welcomeView;
     this.userModel = userModel;
     this.mainView = mainView;
     this.itemModel = itemModel;
     this.itemListView = itemListView;
+    this.itemDetailView = itemDetailView;
     this.filterOptions = {
       search: "",
       sortBy: "name-asc",
@@ -55,11 +63,14 @@ class AppController {
       await this.itemModel.fetchAllItems();
       this.applyFilters();
 
+      this.itemListView.bindItemClick(this.handleItemClick.bind(this));
       this.itemListView.bindFavoriteToggle(
         this.handleFavoriteToggle.bind(this)
       );
 
       this.mainView.hideLoading();
+
+      this.bindModalClose();
     } catch (error) {
       this.logger.error("Failed to load items", error);
       alert("Не удалось загрузить данные. Пожалуйста попробуйте позже");
@@ -106,7 +117,14 @@ class AppController {
     this.logger.log("applyFilters");
     const filteredItems = this.itemModel.applyAllFilters(this.filterOptions);
     this.itemListView.render(filteredItems, this.itemModel.favorites);
-    // button click
+  }
+
+  handleItemClick(itemID) {
+    this.logger.log("handleItemClick");
+    const item = this.itemModel.getItemById(itemID);
+    if (item) {
+      this.itemDetailView.show(item);
+    }
   }
 
   handleFavoriteToggle(itemID, shouldAdd) {
@@ -116,6 +134,20 @@ class AppController {
     } else {
       this.itemModel.removeFromFavorites(itemID);
     }
+  }
+
+  bindModalClose() {
+    document.addEventListener("click", (e) => {
+      if (e.target.id === "main-close-modal") {
+        this.itemDetailView.hide();
+      }
+    });
+
+    document.addEventListener("click", (e) => {
+      if (e.target.id === "main-item-detail-modal") {
+        this.itemDetailView.hide();
+      }
+    });
   }
 }
 

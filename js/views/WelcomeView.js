@@ -32,10 +32,10 @@ class WelcomeView {
         const username = usernameInput.value.trim();
 
         if (username) {
-          this.logger.log('Успешная проверка')
+          this.logger.log("Успешная проверка");
           handler(username);
         } else {
-          this.logger.warn('Пустое имя')
+          this.logger.warn("Пустое имя");
           alert("Введите ваше имя");
         }
       });
