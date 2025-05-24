@@ -56,6 +56,16 @@ input {
   font-weight: 600;
 }
 
+select {
+  font-family: "NotoSans", monospace;
+  font-weight: 600;
+}
+
+option {
+  font-family: "NotoSans", monospace;
+  font-weight: 500;
+}
+
 button {
   font-family: "NotoSans", monospace;
   font-weight: 800;

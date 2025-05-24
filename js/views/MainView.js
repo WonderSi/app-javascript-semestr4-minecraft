@@ -27,6 +27,7 @@ class MainView {
             <div id="main-filter-section">
                 <div id="main-filter-search">
                   <input type="text" id="main-search-input" placeholder="Введите название предмета">
+                  <img src="../../assets/svg/search.svg">
                 </div>
                 <div id="main-filter-sort">
                   <select id="sort-select">
@@ -35,6 +36,7 @@ class MainView {
                     <option value="stackSize-asc">По размеру стака (возр.)</option>
                     <option value="stackSize-desc">По размеру стака (убыв.)</option>
                   </select>
+                  <img src="../../assets/svg/arrow_down.svg">
                 </div>
                 <div id="main-filter-group">
                   <label>
