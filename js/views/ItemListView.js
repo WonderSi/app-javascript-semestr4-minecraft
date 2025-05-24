@@ -10,11 +10,13 @@ class ItemListView {
     this.container = document.getElementById("main-items-container");
     this.logger.log("render");
     this.container.innerHTML = "";
-    if (this.container === 0) {
+
+    if (items.length === 0) {
       this.container.innerHTML = `
-        <div class="no-items-message">
-            <p>Предметы не найдены</p>
-        </div>
+            <div id="no-items-message">
+                <p>Предметы не найдены</p>
+                <p>Попробуйте изменить фильтры или добавить предметы в избранное</p>
+            </div>
         `;
       return;
     }
@@ -27,7 +29,6 @@ class ItemListView {
       const isFavorite = favorites.includes(item.namespacedId);
 
       itemCard.innerHTML = `
-
             <div id="item-image">
                 <img src="${item.image}" alt="${item.name}">
             </div>
@@ -45,8 +46,7 @@ class ItemListView {
                 }" data-id="${item.namespacedId}"><img src="../../assets/svg/${
         isFavorite ? "star_full" : "star_empty"
       }.svg"></button>
-            </div>
-            
+            </div>  
         `;
       this.container.appendChild(itemCard);
     });
@@ -55,7 +55,7 @@ class ItemListView {
   bindFavoriteToggle(handler) {
     this.logger.log("bindFavoriteToggle");
     this.container.addEventListener("click", (event) => {
-      const favoriteBtn = event.target.closest('.item-favorite-btn');
+      const favoriteBtn = event.target.closest(".item-favorite-btn");
 
       if (favoriteBtn) {
         const itemID = favoriteBtn.dataset.id;
@@ -69,13 +69,15 @@ class ItemListView {
   }
 
   updateFavoriteButton(button, isFavorite) {
-    this.logger.log('updateFavoriteButton');
+    this.logger.log("updateFavoriteButton");
     const img = button.querySelector("img");
 
     if (isFavorite) {
+      this.logger.log('StarFull')
       button.classList.add("favorited");
       img.src = "../../assets/svg/star_full.svg";
     } else {
+      this.logger.log('StarEmpty')
       button.classList.remove("favorited");
       img.src = "../../assets/svg/star_empty.svg";
     }

@@ -39,6 +39,10 @@ class ItemModel {
     console.log(localStorage);
   }
 
+  isFavorites(itemID) {
+    return this.favorites.includes(itemID);
+  }
+
   sortItems(items, criteria) {
     this.logger.log("sortItems");
     const itemsToSort = items || this.items;
@@ -78,7 +82,9 @@ class ItemModel {
     }
 
     if (filterOptions.onlyFavorites) {
-      filteredItems = filteredItems.filter((item) => {});
+      filteredItems = filteredItems.filter((item) => {
+        return this.isFavorites(item.namespacedId);
+      });
     }
 
     if (filterOptions.sortBy) {

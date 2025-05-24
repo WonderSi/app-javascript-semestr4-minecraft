@@ -23,6 +23,15 @@ class AppController {
     this.showWelcomeView();
   }
 
+  resetFilterOptions() {
+    this.filterOptions = {
+      search: "",
+      sortBy: "name-asc",
+      onlyRenewable: false,
+      onlyFavorites: false,
+    };
+  }
+
   showWelcomeView() {
     this.logger.log("showWelcomeView");
     this.welcomeView.render();
@@ -32,17 +41,24 @@ class AppController {
   async showMainView() {
     this.logger.log("showMainView");
     const username = this.userModel.getUsername();
+    this.resetFilterOptions();
     this.mainView.render(username);
 
     this.mainView.bindLogout(this.handleLogout.bind(this));
     this.mainView.bindSearch(this.handleSearch.bind(this));
     this.mainView.bindSort(this.handleSort.bind(this));
     this.mainView.bindRenewableFilter(this.handleRenewableFilter.bind(this));
+    this.mainView.bindFavoritesFilter(this.handleFavoritesFilter.bind(this));
 
     this.mainView.showLoading();
     try {
       await this.itemModel.fetchAllItems();
       this.applyFilters();
+
+      this.itemListView.bindFavoriteToggle(
+        this.handleFavoriteToggle.bind(this)
+      );
+
       this.mainView.hideLoading();
     } catch (error) {
       this.logger.error("Failed to load items", error);
@@ -91,7 +107,6 @@ class AppController {
     const filteredItems = this.itemModel.applyAllFilters(this.filterOptions);
     this.itemListView.render(filteredItems, this.itemModel.favorites);
     // button click
-    this.itemListView.bindFavoriteToggle(this.handleFavoriteToggle.bind(this));
   }
 
   handleFavoriteToggle(itemID, shouldAdd) {
@@ -100,10 +115,6 @@ class AppController {
       this.itemModel.addToFavorites(itemID);
     } else {
       this.itemModel.removeFromFavorites(itemID);
-    }
-
-    if (this.filterOptions.onlyFavorites) {
-      this.applyFilters();
     }
   }
 }

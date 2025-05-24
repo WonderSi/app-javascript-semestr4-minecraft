@@ -49,7 +49,6 @@ class MainView {
 
           <div id="main-content-area">
             <div id="main-loading-indicator">
-
               <p>Загрузка данных...</p>
             </div>
             <div id="main-items-container"></div>
@@ -97,6 +96,15 @@ class MainView {
     this.logger.log("bindRenewableFilter");
     document
       .getElementById("main-renewable-filter-input")
+      .addEventListener("change", (event) => {
+        handler(event.target.checked);
+      });
+  }
+
+  bindFavoritesFilter(handler) {
+    this.logger.log("bindFavoriteFilter");
+    document
+      .getElementById("main-favorites-filter-input")
       .addEventListener("change", (event) => {
         handler(event.target.checked);
       });

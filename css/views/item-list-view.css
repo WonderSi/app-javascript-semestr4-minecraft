@@ -1,3 +1,13 @@
+#no-items-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#no-items-message p{
+    width: 100%;
+}
+
 .item-card {
   background-color: #313131;
   box-shadow: 0 -4px 0 0 var(--minecraft-black) inset,
