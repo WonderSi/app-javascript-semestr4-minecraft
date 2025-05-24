@@ -14,3 +14,19 @@
 
 ![Фильтры](./screenshots/2.png)
 *Система фильтрации и поиска*
+
+### Установка
+
+1. Клонируйте репозиторий:
+```
+git clone https://github.com/yourusername/minecraft-item-explorer.git
+cd minecraft-item-explorer
+```
+2. Запустите локальный сервер:
+```
+Live Server в VS Code
+```
+4. Откройте браузер и перейдите по адресу:
+```
+http://localhost:8000
+```
