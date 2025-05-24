@@ -74,7 +74,7 @@
   top: 50%;
   transform: translateY(-50%);
   font-size: 16px;
-  pointer-events: none; /* Иконка не блокирует клики */
+  pointer-events: none;
 }
 
 #main-filter-group {
