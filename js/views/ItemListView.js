@@ -44,7 +44,7 @@ class ItemListView {
                 }">Подробнее</button>
                 <button id="item-favorite-btn" class="item-favorite-btn ${
                   isFavorite ? "favorited" : ""
-                }" data-id="${item.namespacedId}"><img src="../../assets/svg/${
+                }" data-id="${item.namespacedId}"><img src="./assets/svg/${
         isFavorite ? "star_full" : "star_empty"
       }.svg"></button>
             </div>  
@@ -89,11 +89,11 @@ class ItemListView {
     if (isFavorite) {
       this.logger.log("StarFull");
       button.classList.add("favorited");
-      img.src = "../../assets/svg/star_full.svg";
+      img.src = "./assets/svg/star_full.svg";
     } else {
       this.logger.log("StarEmpty");
       button.classList.remove("favorited");
-      img.src = "../../assets/svg/star_empty.svg";
+      img.src = "./assets/svg/star_empty.svg";
     }
   }
 }
