@@ -15,6 +15,8 @@
 ![Фильтры](./screenshots/2.png)
 *Система фильтрации и поиска*
 
+Приложение можно запустить по следующей ссылке: https://wondersi.github.io/app-javascript-semestr4-minecraft/
+
 ### Установка
 
 1. Клонируйте репозиторий:
