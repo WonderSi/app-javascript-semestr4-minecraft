@@ -1,7 +1,7 @@
-import AppController from "./controllers/AppController.js";
+import AppController from './controllers/AppController.js';
 
 import ItemModel from "./models/ItemModel.js";
-import UserModel from "./models/UserModel.js";
+import UserModel from './models/UserModel.js';
 
 import MainView from "./views/MainView.js";
 import WelcomeView from "./views/WelcomeView.js";
