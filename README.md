@@ -17,12 +17,18 @@
 
 Приложение можно запустить по следующей ссылке: https://wondersi.github.io/app-javascript-semestr4-minecraft/
 
+## 🛠️ Технологии
+
+- **Frontend**: HTML5, CSS3, JavaScript ES6+
+- **API**: Minecraft Items API: https://github.com/anish-shanbhag/minecraft-api
+- **Архитектура**: MVC Pattern
+
 ### Установка
 
 1. Клонируйте репозиторий:
 ```
-git clone https://github.com/yourusername/minecraft-item-explorer.git
-cd minecraft-item-explorer
+git clone https://github.com/WonderSi/app-javascript-semestr4-minecraft.git
+cd app-javascript-semestr4-minecraft
 ```
 2. Запустите локальный сервер:
 ```
