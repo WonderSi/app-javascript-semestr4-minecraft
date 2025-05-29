@@ -36,5 +36,5 @@ Live Server в VS Code
 ```
 4. Откройте браузер и перейдите по адресу:
 ```
-http://localhost:8000
+http://localhost:5500
 ```
