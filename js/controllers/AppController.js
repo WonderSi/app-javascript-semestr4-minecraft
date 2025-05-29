@@ -43,7 +43,7 @@ class AppController {
   showWelcomeView() {
     this.logger.log("showWelcomeView");
     this.welcomeView.render();
-    this.welcomeView.bindContinueBtn(this.handleLogin.bind(this));
+    this.welcomeView.bindContinueBtn((username) => this.handleLogin(username));
   }
 
   async showMainView() {
@@ -52,20 +52,20 @@ class AppController {
     this.resetFilterOptions();
     this.mainView.render(username);
 
-    this.mainView.bindLogout(this.handleLogout.bind(this));
-    this.mainView.bindSearch(this.handleSearch.bind(this));
-    this.mainView.bindSort(this.handleSort.bind(this));
-    this.mainView.bindRenewableFilter(this.handleRenewableFilter.bind(this));
-    this.mainView.bindFavoritesFilter(this.handleFavoritesFilter.bind(this));
+    this.mainView.bindLogout(() => this.handleLogout());
+    this.mainView.bindSearch((query) => this.handleSearch(query));
+    this.mainView.bindSort((sortBy) => this.handleSort(sortBy));
+    this.mainView.bindRenewableFilter((checked) => this.handleRenewableFilter(checked));
+    this.mainView.bindFavoritesFilter((checked) => this.handleFavoritesFilter(checked));
 
     this.mainView.showLoading();
     try {
       await this.itemModel.fetchAllItems();
       this.applyFilters();
 
-      this.itemListView.bindItemClick(this.handleItemClick.bind(this));
-      this.itemListView.bindFavoriteToggle(
-        this.handleFavoriteToggle.bind(this)
+      this.itemListView.bindItemClick((itemID) => this.handleItemClick(itemID));
+      this.itemListView.bindFavoriteToggle((itemID, shouldAdd) => 
+        this.handleFavoriteToggle(itemID, shouldAdd)
       );
 
       this.mainView.hideLoading();
